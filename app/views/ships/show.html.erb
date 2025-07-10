@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @ship %>
+
+<div>
+  <%= link_to "Edit this ship", edit_ship_path(@ship) %> |
+  <%= link_to "Back to ships", ships_path %>
+
+  <%= button_to "Destroy this ship", @ship, method: :delete %>
+</div>

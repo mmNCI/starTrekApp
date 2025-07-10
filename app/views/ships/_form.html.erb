@@ -1,0 +1,47 @@
+<%= form_with(model: ship) do |form| %>
+  <% if ship.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(ship.errors.count, "error") %> prohibited this ship from being saved:</h2>
+
+      <ul>
+        <% ship.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :registry, style: "display: block" %>
+    <%= form.text_field :registry %>
+  </div>
+
+  <div>
+    <%= form.label :shipClass, style: "display: block" %>
+    <%= form.text_field :shipClass %>
+  </div>
+
+  <div>
+    <%= form.label :captain, style: "display: block" %>
+    <%= form.text_field :captain %>
+  </div>
+
+  <div>
+    <%= form.label :launched, style: "display: block" %>
+    <%= form.text_field :launched %>
+  </div>
+
+  <div>
+    <%= form.label :decommissioned, style: "display: block" %>
+    <%= form.text_field :decommissioned %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
