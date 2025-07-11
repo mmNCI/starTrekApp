@@ -43,8 +43,12 @@ jobs:
           command: bundle exec rake db:schema:load
 
       - run:
-          name: test-run
-          command: bundle exec rspec
+          name: run-rubocop (linting)
+          command: bundle exec rubocop
+
+      - run:
+          name: run-brakeman
+          command: bundle exec brakeman
 
       - save_cache:
           key: dependency-cache-{{ checksum "Gemfile.lock" }}
