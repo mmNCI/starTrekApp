@@ -20,7 +20,7 @@ jobs:
   build:
     working_directory: ~/starTrekApp
     docker:
-      - image: cimg/ruby:3.3.5
+      - image: cimg/ruby:3.3.5-node
 
     steps:
       - checkout
