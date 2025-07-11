@@ -10,12 +10,12 @@ workflows:
               only:
                 - main
 # - deploy:
-    # filters:
- #     branches:
-  #      only:
-   #       - main
-    #requires:
-     # - build
+# filters:
+#     branches:
+#      only:
+#       - main
+#requires:
+# - build
 jobs:
   build:
     working_directory: ~/starTrekApp
@@ -23,29 +23,30 @@ jobs:
       - image: circleci/ruby:3.3.5
 
     steps:
-      - checkout  
+      - checkout
 
       - restore_cache:
           key: dependency-cache-{{ checksum "Gemfile.lock" }}
-      
-      - run: 
-          name: install-ruby-dependencies 
+
+      - run:
+          name: install-bundle
           command: bundle install
+      - run:
+          name: install-yarn
           command: yarn install
       - run:
           name: setup-database
-          command: bundle exec rake db:create 
+          command: bundle exec rake db:create
 
-      - run: 
+      - run:
           name: load-database-schema
           command: bundle exec rake db:schema:load
-      
-      - run: 
+
+      - run:
           name: test-run
           command: bundle exec rspec
-      
+
       - save_cache:
           key: dependency-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vender/bundle
-  
