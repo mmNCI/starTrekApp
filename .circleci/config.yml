@@ -84,7 +84,7 @@ jobs:
           command: bundle exec rails db:create db:migrate
       - run:
           name: migrate-database
-          command: bundle exec rails db:migrate
+          command: rails db:migrate
 
       - run:
           name: run-rubocop (linting)
