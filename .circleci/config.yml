@@ -81,10 +81,10 @@ jobs:
           command: yarn install
       - run:
           name: setup-database
-          command: bundle exec rails db:create db:migrate
+          command: bundle exec rails db:create
       - run:
           name: migrate-database
-          command: rails db:migrate
+          command: rails db:migrate RAILS_ENV=test
 
       - run:
           name: run-rubocop (linting)
@@ -93,14 +93,13 @@ jobs:
       - run:
           name: run-brakeman
           command: bundle exec brakeman
-
+      - run:
+          name: migrate-database-test-run
+          command: bundle exec rails db:migrate
       - run:
           name: run-test-suite
           command: bundle exec rails test
 
-      - run:
-          name: migrate-database-again
-          command: rails db:migrate
   deploy:
     docker:
       - image: cimg/ruby:3.3.5-node
