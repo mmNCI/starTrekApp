@@ -101,8 +101,8 @@ jobs:
           command: bundle exec rails test
 
   deploy:
-      machine:
-        image: ubuntu-2204:2023.10.1
+    machine:
+      image: ubuntu-2204:2023.10.1
     steps:
       - run:
           name: deploy-application
