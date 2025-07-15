@@ -49,8 +49,8 @@ jobs:
           name: publish-docker-image
           command: docker push $IMAGE_NAME
   test:
-    docker:
     working_directory: ~/starTrekApp
+    docker:
       - image: cimg/ruby:3.3.5-node
     steps:
       - checkout
