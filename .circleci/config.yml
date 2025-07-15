@@ -97,6 +97,7 @@ jobs:
       - run:
           name: run-test-suite
           command: bundle exec rails test
+          
        - run:
           name: migrate-database-again
           command: rails db:migrate    
