@@ -24,6 +24,7 @@ jobs:
 
     steps:
       - checkout
+      - setup_remote_docker
 
       - restore_cache:
           key: dependency-cache-{{ checksum "Gemfile.lock" }}
@@ -34,30 +35,45 @@ jobs:
       - run:
           name: install-yarn
           command: yarn install
-      - run:
-          name: setup-database
-          command: bundle exec rake db:create
-
-      - run:
-          name: load-database-schema
-          command: bundle exec rake db:schema:load
-
-      - run:
-          name: run-rubocop (linting)
-          command: bundle exec rubocop
-
-      - run:
-          name: run-brakeman
-          command: bundle exec brakeman
-
       - save_cache:
           key: dependency-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vender/bundle
-deploy:
-  docker:
-    - image: cimg/ruby:3.3.5-node
-  steps:
-    - run:
-        name: deploy-application
-        command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@EC2_PUBLIC_DNS "rm -rf starTrekApp/; git clone https://github.com/mmNCI/starTrekApp.git; source starTrekApp/deploy.sh"
+      - run:
+          name: docker-login
+          command: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run:
+          name: build-docker-image
+          command: docker build -t $IMAGE_NAME:latest .
+      - run:
+          name: publish-docker-image
+          command: docker push $IMAGE_NAME
+  test:
+    docker:
+      - image: cimg/ruby:3.3.5-node
+      steps:
+        - checkout
+        - restore_cache:
+            keys:
+              - bundler-v1-{{checksum "Gemfile.lock"}}
+        - run:
+            name: setup-database
+            command: bundle exec rake db:create
+        - run:
+            name: run-rubocop (linting)
+            command: bundle exec rubocop
+
+        - run:
+            name: run-brakeman
+            command: bundle exec brakeman
+
+        - run:
+            name: run-test-suite
+            command: bundle exec rails test
+  deploy:
+    docker:
+      - image: cimg/ruby:3.3.5-node
+      steps:
+        - run:
+            name: deploy-application
+            command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@EC2_PUBLIC_DNS "rm -rf starTrekApp/; git clone https://github.com/mmNCI/starTrekApp.git; source starTrekApp/deploy.sh"
