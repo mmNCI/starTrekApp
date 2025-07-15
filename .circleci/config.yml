@@ -56,24 +56,24 @@ jobs:
       - restore_cache:
           keys:
             - bundler-v1-{{checksum "Gemfile.lock"}}
-        - run:
-            name: setup-database
-            command: bundle exec rake db:create
-        - run:
-            name: run-rubocop (linting)
-            command: bundle exec rubocop
+      - run:
+          name: setup-database
+          command: bundle exec rake db:create
+      - run:
+          name: run-rubocop (linting)
+          command: bundle exec rubocop
 
-        - run:
-            name: run-brakeman
-            command: bundle exec brakeman
+      - run:
+          name: run-brakeman
+          command: bundle exec brakeman
 
-        - run:
-            name: run-test-suite
-            command: bundle exec rails test
+      - run:
+          name: run-test-suite
+          command: bundle exec rails test
   deploy:
     docker:
-        - image: cimg/ruby:3.3.5-node
-      steps:
-        - run:
-            name: deploy-application
-            command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@EC2_PUBLIC_DNS "rm -rf starTrekApp/; git clone https://github.com/mmNCI/starTrekApp.git; source starTrekApp/deploy.sh"
+      - image: cimg/ruby:3.3.5-node
+        steps:
+          - run:
+              name: deploy-application
+              command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@EC2_PUBLIC_DNS "rm -rf starTrekApp/; git clone https://github.com/mmNCI/starTrekApp.git; source starTrekApp/deploy.sh"
