@@ -50,6 +50,7 @@ jobs:
           command: docker push $IMAGE_NAME
   test:
     docker:
+    working_directory: ~/starTrekApp
       - image: cimg/ruby:3.3.5-node
     steps:
       - checkout
