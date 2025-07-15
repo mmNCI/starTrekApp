@@ -75,7 +75,7 @@ jobs:
             - bundler-v1-{{checksum "Gemfile.lock"}}
       - run:
           name: setup-database
-          command: bundle exec rails db:create
+          command: bundle exec rails db:create db:migrate
       - run:
           name: run-rubocop (linting)
           command: bundle exec rubocop
