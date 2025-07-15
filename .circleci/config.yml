@@ -74,6 +74,12 @@ jobs:
           keys:
             - bundler-v1-{{checksum "Gemfile.lock"}}
       - run:
+          name: install-bundle
+          command: bundle install
+      - run:
+          name: install-yarn
+          command: yarn install
+      - run:
           name: setup-database
           command: bundle exec rails db:create db:migrate
       - run:
