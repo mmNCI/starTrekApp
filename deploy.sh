@@ -7,8 +7,8 @@ echo "Starting..."
 cd ~/starTrekApp || exit 1
 git pull origin main
 
-docker-compose down
-docker-compose build
-docker-compose up -d
+docker compose down
+docker compose build
+docker compose up -d
 
 echo "Finished"
