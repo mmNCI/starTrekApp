@@ -14,6 +14,10 @@ docker compose down
 docker compose build
 docker compose up -d
 
+which ruby
+which bundle
+ruby -v
+bundle -v
 
 bundle exec rails db:migrate RAILS_ENV=production
 bundle exec rails assets:precompile RAILS_ENV=production
