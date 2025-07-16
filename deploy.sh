@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-sudo apt update && sudo apt install -y build-essential libpq-dev
 set -e
+sudo apt update && sudo apt install -y build-essential libpq-dev
+
 
 echo "Starting..."
 
@@ -19,9 +20,9 @@ which bundle
 ruby -v
 bundle -v
 
-bundle exec rails db:migrate RAILS_ENV=production
-bundle exec rails assets:precompile RAILS_ENV=production
-bundle exec puma -C config/puma.rb
+docker exec rails db:migrate RAILS_ENV=production
+docker exec rails assets:precompile RAILS_ENV=production
+docker exec puma -C config/puma.rb
 
 
 echo "Finished"
