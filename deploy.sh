@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+sudo apt update && sudo apt install -y build-essential libpq-dev
 set -e
 
 echo "Starting..."
