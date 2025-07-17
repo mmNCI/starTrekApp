@@ -15,8 +15,8 @@ echo $SERVER > server.crt
 docker compose down
 docker compose build
 
-export SECRET_KEY_BASE=$SECRET_KEY_BASE
-docker compose up -d --build
+#export SECRET_KEY_BASE=$SECRET_KEY_BASE
+docker compose up -d 
 
 
 # which ruby

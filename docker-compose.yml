@@ -7,5 +7,5 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - RAILS_ENV=production
-      - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+      - RAILS_ENV=development
+      #- SECRET_KEY_BASE=${SECRET_KEY_BASE}
