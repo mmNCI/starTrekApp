@@ -21,8 +21,8 @@ docker compose up -d
 # ruby -v
 # bundle -v
 
-docker compose exec rails db:migrate RAILS_ENV=production
-docker compose exec rails assets:precompile RAILS_ENV=production
+docker compose run rails rails db:migrate RAILS_ENV=production
+docker compose run rails rails assets:precompile RAILS_ENV=production
 docker compose exec puma -C config/puma.rb
 
 
