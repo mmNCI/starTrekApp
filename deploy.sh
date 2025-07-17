@@ -16,7 +16,7 @@ docker compose down
 docker compose build
 
 export SECRET_KEY_BASE=$SECRET_KEY_BASE
-docker compose up -d
+docker compose up -d --build
 
 
 # which ruby
