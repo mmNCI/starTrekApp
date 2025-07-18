@@ -66,8 +66,8 @@ COPY --from=build /rails /rails
 
 
 RUN mkdir -p public/assets && \
-    chmod -R 775 public && \
-    chown -R root:root public 
+    chown -R appuser:appuser /starTrekApp/public/assets
+    USER appuser 
 
 
 
