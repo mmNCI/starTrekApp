@@ -13,7 +13,7 @@ echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
 
 docker compose down
-docker compose build
+docker compose build --no-cache
 
 export SECRET_KEY_BASE=$SECRET_KEY_BASE
 echo "SECRET_KEY_BASE is ${SECRET_KEY_BASE} characters long"
