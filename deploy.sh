@@ -15,7 +15,8 @@ echo $SERVER > server.crt
 docker compose down
 docker compose build
 
-#export SECRET_KEY_BASE=$SECRET_KEY_BASE
+export SECRET_KEY_BASE=$SECRET_KEY_BASE
+echo "SECRET_KEY_BASE is ${SECRET_KEY_BASE} characters long"
 docker compose up -d 
 
 
