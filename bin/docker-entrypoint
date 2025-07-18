@@ -1,4 +1,5 @@
 #!/bin/bash -e
+set -e
 
 # Enable jemalloc for reduced memory usage and latency.
 if [ -z "${LD_PRELOAD+x}" ]; then
