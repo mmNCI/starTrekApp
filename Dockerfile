@@ -66,7 +66,8 @@ COPY --from=build /rails /rails
 
 
 RUN mkdir -p public/assets && \
-    chmod -R 775 public/assets
+    chmod -R 775 public && \
+    chown -R root:root public 
 
 
 
