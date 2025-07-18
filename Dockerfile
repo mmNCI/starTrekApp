@@ -65,9 +65,8 @@ COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --from=build /rails /rails
 
 
-RUN mkdir -p public/assets && \
-    chown -R appuser:appuser /starTrekApp/public/assets
-    
+RUN mkdir -p /starTrekApp/public/assets 
+
 
 
 
