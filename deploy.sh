@@ -17,7 +17,7 @@ docker compose build
 
 export SECRET_KEY_BASE=$SECRET_KEY_BASE
 echo "SECRET_KEY_BASE is ${SECRET_KEY_BASE} characters long"
-docker compose up -d 
+docker compose up -d --build
 
 
 # which ruby
