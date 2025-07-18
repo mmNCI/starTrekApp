@@ -1,6 +1,7 @@
 services:
   web:
     build: .
+    entrypoint: /rails/bin/docker-entrypoint
     command: bundle exec rails server -b 0.0.0.0 -p 3000
     volumes:
       - .:/rails
