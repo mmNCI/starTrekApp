@@ -46,10 +46,10 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 # Make file executable
-RUN ls -l /rails/bin/docker-entrypoint && file /rails/bin/docker-entrypoint
-COPY bin/docker-entrypoint /rails/bin/docker-entrypoint
-RUN chmod +x /rails/bin/docker-entrypoint
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+RUN ls -l /usr/bin/docker-entrypoint && file /usr/bin/docker-entrypoint
+COPY bin/docker-entrypoint /usr/bin/docker-entrypoint
+RUN chmod +x /usr/bin/docker-entrypoint
+ENTRYPOINT ["/usr/bin/docker-entrypoint"]
 CMD ["rails","server","-b","0.0.0.0"]
 
 
