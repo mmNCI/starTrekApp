@@ -18,7 +18,7 @@ WORKDIR /rails
 # Install base packages
 RUN apt-get update -qq && \
     DEBIAN_FRONTEND=noninteractive \
-    install --no-install-recommends -y \
+    apt-get install --no-install-recommends -y \
         curl \
         libjemalloc-dev \
         libvips \
