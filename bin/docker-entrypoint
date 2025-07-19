@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/bin/sh
 set -e
 
 # Enable jemalloc for reduced memory usage and latency.
