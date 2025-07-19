@@ -22,7 +22,7 @@ RUN apt-get install --no-install-recommends -y curl
 RUN apt-get install --no-install-recommends -y libvips-dev
 RUN apt-get install --no-install-recommends -y sqlite3
 RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
+# test comment
 # Set production environment
 ENV RAILS_ENV="production" \
     BUNDLE_DEPLOYMENT="1" \
