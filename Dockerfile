@@ -46,7 +46,7 @@ COPY . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 # Make file executable
-RUN ls -l /usr/bin/docker-entrypoint && file /usr/bin/docker-entrypoint
+#RUN ls -l /usr/bin/docker-entrypoint && file /usr/bin/docker-entrypoint
 COPY bin/docker-entrypoint /usr/bin/docker-entrypoint
 RUN chmod +x /usr/bin/docker-entrypoint
 #ENTRYPOINT ["/usr/bin/docker-entrypoint"]
