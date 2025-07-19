@@ -17,12 +17,15 @@ WORKDIR /rails
 
 # Install base packages
 RUN cat /etc/resolv.conf 
-RUN apt-get update -qq
-RUN apt-get install --no-install-recommends -y curl
+RUN apt-get update -qq && apt-get install --no-install-recommends -y \
+    gnupg \
+    apt-transport-https \
+    ca-certificates \
+    curl \
 #RUN apt-get install --no-install-recommends -y libjemalloc1
-RUN apt-get install --no-install-recommends -y libvips-dev
-RUN apt-get install --no-install-recommends -y sqlite3
-RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    libvips-dev \
+    sqlite3 \
+    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 # test comment
 # Set production environment
 ENV RAILS_ENV="production" \
