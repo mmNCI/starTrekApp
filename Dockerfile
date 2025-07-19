@@ -28,7 +28,7 @@ RUN apt-get update -qq && \
     libjemalloc2 \
     libvips \
     sqlite3 && \
-    rm -rf /var/lib/apt/lists/var/cache/apt/archives
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives
 # test comment
 # Set production environment
 ENV RAILS_ENV="production" \
