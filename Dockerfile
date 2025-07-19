@@ -18,7 +18,7 @@ WORKDIR /rails
 # Install base packages
 RUN apt-get update -qq
 RUN apt-get install --no-install-recommends -y curl
-RUN apt-get install --no-install-recommends -y libjemalloc2
+RUN apt-get install --no-install-recommends -y libjemalloc2-dev
 RUN apt-get install --no-install-recommends -y libvips-dev
 RUN apt-get install --no-install-recommends -y sqlite3
 RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives
