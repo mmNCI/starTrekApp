@@ -4,7 +4,7 @@ services:
     entrypoint: /usr/bin/docker-entrypoint
     command: ["/usr/bin/docker-entrypoint"]
     volumes:
-      - .:/rails
+      - ./public/assets:/rails/public/assets
     ports:
       - "3000:3000"
     environment:
