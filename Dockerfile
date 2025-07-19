@@ -21,7 +21,7 @@ RUN apt-get install --no-install-recommends -y curl
 RUN apt-get install --no-install-recommends -y libjemalloc2
 RUN apt-get install --no-install-recommends -y libvips
 RUN apt-get install --no-install-recommends -y sqlite3
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
 ENV RAILS_ENV="production" \
