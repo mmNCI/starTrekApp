@@ -16,16 +16,19 @@ FROM docker.io/library/ruby:$RUBY_VERSION-bullseye AS base
 WORKDIR /rails
 
 # Install base packages
-RUN cat /etc/resolv.conf 
-RUN apt-get update -qq && apt-get install --no-install-recommends -y \
-    gnupg \
-    apt-transport-https \
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update -qq && \
+    apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
-#RUN apt-get install --no-install-recommends -y libjemalloc1
-    libvips-dev \
-    sqlite3 \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    gnupg \
+    apt-transport-https && \
+    apt-get install -y --no-install-recommends \
+    libjemalloc2 \
+    libvips \
+    sqlite3 && \
+    rm -rf /var/lib/apt/lists/var/cache/apt/archives
 # test comment
 # Set production environment
 ENV RAILS_ENV="production" \
