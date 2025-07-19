@@ -16,7 +16,7 @@ FROM docker.io/library/ruby:$RUBY_VERSION-bullseye AS base
 WORKDIR /rails
 
 # Install base packages
-RUN cat /etc/resolv.conf && ping -c 3 deb.debian.org
+RUN cat /etc/resolv.conf 
 RUN apt-get update -qq
 RUN apt-get install --no-install-recommends -y curl
 #RUN apt-get install --no-install-recommends -y libjemalloc1
