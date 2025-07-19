@@ -19,7 +19,7 @@ WORKDIR /rails
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
         curl \
-        libjemalloc2 \
+        libjemalloc-dev \
         libvips \
         sqlite3 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
